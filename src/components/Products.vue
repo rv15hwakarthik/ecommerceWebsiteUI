@@ -28,15 +28,15 @@ export default {
     data: function(){
         return {
         products: [
-            {   
+            {
                 photo: "https://cdn.vuetifyjs.com/images/cards/desert.jpg",
-                name: "Product Name",
-                usp:"Unique selling point"
+                name: 'Product Name',
+                usp:'Unique selling point'
             },
             {
                 photo: "https://cdn.vuetifyjs.com/images/cards/desert.jpg",
-                name: "Product Name2",
-                usp:"Unique selling point"
+                name: 'Product Name2',
+                usp:'Unique selling point'
             }
         ]
         }
