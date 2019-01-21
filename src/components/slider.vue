@@ -3,54 +3,110 @@
      <div id="myCarousel" class="carousel slide" data-ride="carousel">
 <div class="row">
   <h2>Electronics</h2>
-  <div class="column">
-    <img src="static/electronics.jpg" alt="Snow" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics2.jpeg" alt="Forest" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics3.jpeg" alt="Mountains" style="width:80%">
-  </div>
+  <v-carousel
+ height="200px"
+  >
+     <v-carousel-item
+      v-for="(item,i) in items"
+      :key="i"
+      :src="item.src"
+      >
+
+
+<!-- <v-layout row wrap>
+       <v-flex xs3 sm3 >
+
+                    <v-card width="200" height="200">
+                      <v-card-media
+                        :src="cards.course_photo"
+                        height="200px"
+                        contain
+                      >
+                      </v-card-media>
+
+                    </v-card>
+
+  </v-flex>
+   <v-flex xs3 sm3 >
+
+                    <v-card width="200" height="200">
+                      <v-card-media
+                        :src="cards.course_photo"
+                        height="200px"
+                        contain
+                      >
+                      </v-card-media>
+
+                    </v-card>
+
+  </v-flex>
+   <v-flex xs3 sm3 >
+
+                    <v-card width="200" height="200">
+                      <v-card-media
+                        :src="cards.course_photo"
+                        height="200px"
+                        contain
+                      >
+                      </v-card-media>
+
+                    </v-card>
+
+  </v-flex>
+      <v-flex xs3 sm3 >
+
+                    <v-card width="200" height="200">
+                      <v-card-media
+                        :src="cards.course_photo"
+                        height="200px"
+                        contain
+                      >
+                      </v-card-media>
+
+                    </v-card>
+
+  </v-flex>
+      <v-flex xs3 sm3 >
+
+                    <v-card width="200" height="200">
+                      <v-card-media
+                        :src="cards.course_photo"
+                        height="200px"
+                        contain
+                      >
+                      </v-card-media>
+
+                    </v-card>
+
+  </v-flex>
+
+
+</v-layout>
+    </v-carousel-item> -->
+     <!-- <v-carousel-item>
+    <v-card>
+
+
+
+                    <v-card width="200" height="550">
+                      <v-card-media
+                        :src="cards.course_photo"
+                        height="200px"
+                        contain
+                      >
+                      </v-card-media>
+
+                    </v-card>
+
+
+    </v-card> -->
+
+    </v-carousel-item>
+  </v-carousel>
+
 </div>
   </div>
-    <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel"> -->
-<div class="row">
-  <h2>Home Appliances</h2>
-  <div class="column">
-    <img src="static/electronics.jpg" alt="Snow" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics4.jpeg" alt="Forest" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics5.jpeg" alt="Mountains" style="width:80%">
-  </div>
-</div>
-<div class="row">
-  <h2>Groceries</h2>
-  <div class="column">
-    <img src="static/electronics5.jpeg" alt="Snow" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics6.jpeg" alt="Forest" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics7.jpeg" alt="Mountains" style="width:80%">
-  </div>
-</div>
-<div class="row">
-  <h2>Furniture</h2>
-  <div class="column">
-    <img src="static/electronics.jpg" alt="Snow" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics2.jpeg" alt="Forest" style="width:80%">
-  </div>
-  <div class="column">
-    <img src="static/electronics3.jpeg" alt="Mountains" style="width:80%">
-  </div>
-</div>
+
   </div>
 
 
@@ -61,7 +117,23 @@
 <script>
 export default {
   name: 'slider',
+     data () {
+      return {
 
+           cards:[ {
+          course_photo: 'static/electronics3.jpeg',
+           course_photo: 'static/electronics3.jpeg',
+            course_photo: 'static/electronics3.jpeg',
+             course_photo: 'static/electronics3.jpeg',
+              course_photo: 'static/electronics3.jpeg',
+               course_photo: 'static/electronics3.jpeg',
+                course_photo: 'static/electronics3.jpeg',
+                 course_photo: 'static/electronics3.jpeg',
+
+        }]
+
+     }
+    },
 }
 
 </script>

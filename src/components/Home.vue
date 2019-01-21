@@ -5,14 +5,14 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn > <v-icon left>supervisor_account</v-icon>Electronics</v-btn>
-        <v-btn > <v-icon left>supervisor_account</v-icon>Tv's & Appliances</v-btn>
+        <v-btn > <v-icon left>supervisor_account</v-icon>Tvs&Appliances</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Men</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Women</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Baby&Kids</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Home</v-btn>
         <v-btn flat><v-icon left>video_label</v-icon>Furniture</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Sports</v-btn>
-        <v-btn flat><v-icon left>supervisor_account</v-icon>Sign Up</v-btn>
+        <v-btn flat><v-icon left>supervisor_account</v-icon>Fashion</v-btn>
       </v-toolbar-items>
     </v-toolbar>
          <v-carousel hide-delimiters>

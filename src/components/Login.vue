@@ -25,13 +25,40 @@
                     <v-flex sm12 md4></v-flex>
                 </v-layout>
                 <br>
-                <v-btn @click="validate">Login</v-btn>
+                <v-btn @click="login" >Login</v-btn>
             </v-form>
         </div>
     </div>
 </template>
+
+
 <script>
-export default {
-    name: "Login"
-}
+
+ import Axios from 'axios'
+ export default {
+    name: "Login",
+
+
+  data () {
+   return {
+    email: '',
+    password: ''
+    }
+  },
+  methods: {
+   login: function () {
+    console.log(this.email)
+    Axios.post('http://10.177.7.137:8080/user/login', {
+     password: this.password,
+     email: this.email,
+    }).then(response => {
+console.log(response.data);
+    }).catch(error => {
+     console.log('Error login')
+     console.log(error)
+     //this.$router.push('/Admin/login')
+    })
+   }
+  }
+ }
 </script>
