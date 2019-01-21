@@ -33,7 +33,7 @@ export default new Router({
       component: Subcategory
     },
     {
-      path: '/products',
+      path: '/products/:name',
       name: 'Products',
       component: Products
     },

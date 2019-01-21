@@ -7,7 +7,7 @@
         <v-container fluid>
           <v-layout>
             <v-flex class="padding">
-              <v-carousel hide-delimeters>
+              <v-carousel hide-delimeters height="400">
                 <v-carousel-item
                   v-for="(item,i) in items"
                   :key="i"
@@ -79,52 +79,64 @@
         right: null,
         items: [
           {
-            src: "static/Photos/10.jpg"
+            src: require('@/assets/10.jpg')
           },
           {
-            src: "static/Photos/261.jpg"
+            src: require("@/assets/261.jpg")
           },
           {
-            src: "static/Photos/discount12.png"
+            src: require("@/assets/discount12.png")
           }
         ],
         cards:[ {
           
          Category: 'Electonics',
-          photo: "static/Photos/electronics.jpg",
+          photo: require("@/assets/electronics.jpg"),
        },
        {
             Category: 'Footwear',
-           photo: "static/Photos/footwear.jpeg",
+           photo: require("@/assets/footwear.jpeg"),
        },
        {
           
           Category: 'Fashion',
-          photo: "static/Photos/fashion.jpg",
+          photo: require("@/assets/fashion.jpg"),
        },
        {  Category: 'Sports and Outdoors',
-          photo: "static/Photos/sports.jpeg",
+          photo: require("@/assets/sports.jpeg"),
 
        },
        {
           
         Category: 'Automotive',
-          photo: "static/Photos/automotive.jpeg",
+          photo: require("@/assets/automotive.jpeg"),
        },
        { 
          Category: 'Books',
-          photo: "static/Photos/boos.png",
+          photo: require("@/assets/boos.png"),
        },
        {
           
          Category: 'Beauty',
-          photo: "static/Photos/healthcare.png",
+          photo: require("@/assets/healthcare.png"),
        },
        { Category: 'Home',
-          photo: "static/Photos/home.jpg",
+          photo: require("@/assets/home.jpg"),
        }
          ] }
-  }
+  },
+  created: function () {
+     console.log('hello');
+     Axios.get('http://10.177.7.131:8003/products/getAllCategories')
+       .then((response) => {
+           console.log(response);
+         this.cards = response.data;
+
+       })
+       .catch((error) => {
+         console.log(error)
+       })
+   }
 }
 </script>
 

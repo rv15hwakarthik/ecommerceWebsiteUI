@@ -24,7 +24,7 @@
                     <v-flex sm12 md4></v-flex>
                 </v-layout>
                 <br>
-                <v-btn @click="login" >Login</v-btn>
+                <v-btn @click="login" >Signin</v-btn>
             </v-form>
         </div>
     </div>
