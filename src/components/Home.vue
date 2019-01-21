@@ -29,12 +29,12 @@
               <v-container fluid grid-list-md>
                 <v-layout row wrap>
                   <v-flex md3
-                    v-bind="{ [`xs${card.flex}`]: true }"
+                  v-bind="{ [`xs${card.flex}`]: true }"
                     v-for="card in cards"
                     :key="card.title"
                   >
 
-                    <v-card width="250" height="300">
+                    <v-card width="250" height="250">
                       <v-card-media
                         :src="card.photo"
                         height="200px"
@@ -45,7 +45,7 @@
 
                         <v-card-actions>
 
-                          <v-btn absolute bottom  style="margin-top: auto"  color="orange" 
+                          <v-btn absolute bottom  style="margin-top: auto"  color="red" 
                                  v-bind:to="{name: 'Subcategory', params: {name: card.Category} }">{{card.Category}}
                           </v-btn>
                         </v-card-actions>

@@ -4,6 +4,8 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import Products from '@/components/Products'
 import Subcategory from '@/components/Subcategory'
+import Signup from '@/components/Signup'
+import Merchant from '@/components/Merchant'
 
 Vue.use(Router)
 
@@ -14,6 +16,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/merchant',
+      name: 'Merchant',
+      component: Merchant
     },
     {
       path: '/login',
@@ -29,6 +36,11 @@ export default new Router({
       path: '/products',
       name: 'Products',
       component: Products
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
     }
   ],
 

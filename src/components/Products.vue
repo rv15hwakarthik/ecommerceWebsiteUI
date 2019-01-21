@@ -1,15 +1,15 @@
 <template>
     <div class="text-xs-center padding_products" >
         
-        <div v-for="item in products" :key="item.photo">
+        <div v-for="item in products" :key="item.name">
             <v-layout>
                 <v-flex xs12 sm6 md4 offset-md4>
                     <v-card>
-                        <v-img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" aspect-ratio="2.75"></v-img>
-                            <v-card-title primary-title>
+                        <v-img :src="item.photo" aspect-ratio="2.75"></v-img>
+                            <v-card-title primary-title class="justify-center">
                                 <div>
-                                    <h3 class="headline mb-0">Product Name</h3>
-                                    <div>Product Usp</div>
+                                    <h3 class="headline mb-0">{{ item.name }}</h3>
+                                    <div>{{ item.usp }}</div>
                                 </div>
                             </v-card-title>
                             <v-card-actions>
@@ -34,13 +34,23 @@
     
        products: [
             {   
-                photo: '',
-                name: '',
-                usp:''
+                photo: 'static/Photos/10.jpg',
+                name: 'Product name',
+                usp:'Something somethin something'
+            },
+            {   
+                photo: 'static/Photos/10.jpg',
+                name: 'Product name',
+                usp:'Something somethin something'
+            },
+            {   
+                photo: 'static/Photos/10.jpg',
+                name: 'Product name',
+                usp:'Something somethin something'
             }
         ]
       }
-    },
+    }
 
     // created: function () {
     //   console.log('hello')
