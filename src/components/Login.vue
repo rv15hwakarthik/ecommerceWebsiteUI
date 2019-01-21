@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <br><br><br><br><br><br><br><br><br><br>
+    <div class="padding_login">
         <div class="text-xs-center">
             <!-- <p style="font-size:200%; text-align:center">LOGIN USING GOOGLE</p> -->
             <v-form ref="form" v-model="valid" lazy-validation>
@@ -62,3 +61,13 @@ console.log(response.data);
   }
  }
 </script>
+<<<<<<< HEAD
+=======
+
+<style>
+    .padding_login
+    {
+        margin-top: 252px;
+    }
+</style>
+>>>>>>> d3447def32343c54deff5693934a64d368fa713e

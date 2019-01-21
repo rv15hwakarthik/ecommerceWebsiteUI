@@ -1,20 +1,17 @@
 <template>
     <div class="text-xs-center padding_products" >
-
-        <div v-for="item in products" :key="item.name">
+        
+        <div v-for="item in sscats" :key="item.name">
             <v-layout>
                 <v-flex xs12 sm6 md4 offset-md4>
                     <v-card>
-                        <v-img :src="item.photo" aspect-ratio="2.75"></v-img>
+                        <v-img :src="item.photo" aspect-ratio="2.75"></v-img>                   
                             <v-card-title primary-title class="justify-center">
                                 <div>
-                                    <h3 class="headline mb-0">{{ item.name }}</h3>
-                                    <div>{{ item.usp }}</div>
+                                    <v-btn flat><h3 style="font-family:sans-serif">{{ item.name }}</h3></v-btn>
+                                    <!-- <div>Product Usp</div> -->
                                 </div>
                             </v-card-title>
-                            <v-card-actions>
-                                <v-btn flat><v-icon left>shopping_cart</v-icon>ADD TO CART</v-btn>
-                            </v-card-actions>
                     </v-card>
                 </v-flex>
             </v-layout>
@@ -24,34 +21,33 @@
 
 
 <script>
- // import Axios from 'axios'
+//   import Axios from 'axios'
 
   export default {
-    name: 'Products',
+    name: 'Subcategory',
 
     data() {
-      return {
-
-       products: [
-            {
-                photo: 'static/Photos/10.jpg',
-                name: 'Product name',
-                usp:'Something somethin something'
+      return {   
+       sscats: [
+            {   
+                photo: 'static/Photos/new.jpg',
+                name: 'Something1'
             },
-            {
-                photo: 'static/Photos/10.jpg',
-                name: 'Product name',
-                usp:'Something somethin something'
+             {   
+                photo: 'static/Photos/electronics.jpg',
+                name: 'Something2'
             },
-            {
-                photo: 'static/Photos/10.jpg',
-                name: 'Product name',
-                usp:'Something somethin something'
+             {   
+                photo: 'static/Photos/electronics.jpg', 
+                name: 'Something3'
+            },
+            {   
+                photo: 'static/Photos/electronics.jpg',
+                name: 'Something4'
             }
         ]
       }
     }
-
     // created: function () {
     //   console.log('hello')
     //   Axios.get('http://192.168.137.1:3000/student/course/view')

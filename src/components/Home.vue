@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn > <v-icon left>supervisor_account</v-icon>Electronics</v-btn>
-        <v-btn > <v-icon left>supervisor_account</v-icon>Tvs&Appliances</v-btn>
+        <v-btn > <v-icon left>supervisor_account</v-icon>Tv's & Appliances</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Men</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Women</v-btn>
         <v-btn > <v-icon left>supervisor_account</v-icon>Baby&Kids</v-btn>
