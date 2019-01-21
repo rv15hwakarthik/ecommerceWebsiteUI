@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <router-view></router-view>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <v-card-text>
 
       <h2>If you like shopping with us. please take few seconds in rating your experience. it really helps!!!</h2>

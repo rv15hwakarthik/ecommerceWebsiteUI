@@ -8,7 +8,7 @@
       <v-toolbar-title><v-btn router to="/" style="font-size:160%;" active-class="" flat><div style="color:black">sabkuch.com</div></v-btn></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat router to="/products"> <v-icon left>video_label</v-icon>Products</v-btn>
+        <v-btn flat router to="/products/all"> <v-icon left>video_label</v-icon>Products</v-btn>
         <v-btn flat router to="/signup"><v-icon left>supervisor_account</v-icon>Signup</v-btn>
         <v-btn flat router to="/login"><v-icon left>supervisor_account</v-icon>Signin</v-btn>
       </v-toolbar-items>
@@ -41,7 +41,7 @@ export default {
   name: 'App',
   data(){
     return {
-
+        searchText:""
       }
 
     }

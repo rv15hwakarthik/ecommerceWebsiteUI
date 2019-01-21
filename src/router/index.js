@@ -6,6 +6,7 @@ import Products from '@/components/Products'
 import Subcategory from '@/components/Subcategory'
 import Signup from '@/components/Signup'
 import Merchant from '@/components/Merchant'
+import Rating from '@/components/Rating'
 
 Vue.use(Router)
 
@@ -33,7 +34,12 @@ export default new Router({
       component: Subcategory
     },
     {
-      path: '/products',
+      path:'/rating',
+name: 'Rating',
+component: Rating
+    },
+    {
+      path: '/products/:name',
       name: 'Products',
       component: Products
     },

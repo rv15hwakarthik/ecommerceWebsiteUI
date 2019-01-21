@@ -34,17 +34,17 @@
 
        products: [
             {
-                photo: 'static/Photos/10.jpg',
+                photo: require('@/assets/10.jpg'),
                 name: 'Product name',
                 usp:'Something somethin something'
             },
             {
-                photo: 'static/Photos/10.jpg',
+                photo: require('@/assets/10.jpg'),
                 name: 'Product name',
                 usp:'Something somethin something'
             },
             {
-                photo: 'static/Photos/10.jpg',
+                photo: require('@/assets/10.jpg'),
                 name: 'Product name',
                 usp:'Something somethin something'
             }
