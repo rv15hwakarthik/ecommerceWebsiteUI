@@ -1,6 +1,6 @@
 <template>
-    <div class="text-xs-center">
-        <br><br><br><br><br><br><br><br><br><br>
+    <div class="text-xs-center padding_products" >
+        
         <div v-for="item in products" :key="item.photo">
             <v-layout>
                 <v-flex xs12 sm6 md4 offset-md4>
@@ -43,3 +43,9 @@ export default {
     }
 }
 </script>
+
+<style>
+    .padding_products{
+        margin-top: 180px
+    }
+</style>

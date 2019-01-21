@@ -1,7 +1,6 @@
 <template>
     <div>
-        <br><br><br><br><br><br><br><br><br><br>
-        <div class="text-xs-center">
+        <div class="text-xs-center padding_login">
             <!-- <p style="font-size:200%; text-align:center">LOGIN USING GOOGLE</p> -->
             <v-form ref="form" v-model="valid" lazy-validation>
                 <v-layout>
@@ -35,3 +34,9 @@ export default {
     name: "Login"
 }
 </script>
+
+<style>
+    .padding_login{
+        margin-top:270px
+    }
+</style>
