@@ -1,11 +1,11 @@
-<template>
-  <div id="app">
+<template >
+  <div id="app" style="background-image: url('');">
     <router-view/>
     
     <v-toolbar  fixed extended extension-height="70px">
-      <v-container>
+      <v-container class="font">
       <v-layout>
-      <v-toolbar-title><v-btn router to="/" style="font-size:160%" active-class="" flat><div style="color:red">sabkuch.com</div></v-btn></v-toolbar-title>
+      <v-toolbar-title><v-btn router to="/" style="font-size:160%;" active-class="" flat><div style="color:black">sabkuch.com</div></v-btn></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat router to="/"> <v-icon left>supervisor_account</v-icon>Home</v-btn>
@@ -51,5 +51,7 @@ export default {
 </script>
 
 <style>
-
+.font{
+font-family:sans-serif
+}
 </style>

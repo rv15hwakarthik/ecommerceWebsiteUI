@@ -7,7 +7,7 @@
         <v-container fluid>
           <v-layout>
             <v-flex class="padding">
-              <v-carousel hide-delimiters>
+              <v-carousel hide-delimeters>
                 <v-carousel-item
                   v-for="(item,i) in items"
                   :key="i"
@@ -41,24 +41,18 @@
                         contain
                       >
                       </v-card-media>
-                      <v-flex>
-
-                          <div class="text--black">
-                            <div><h3 style=" text-align:center; margin-top:20px"> {{ card.subject }} </h3></div>
-                            
-                            <br>
-
-                          </div>
-
-
+                 
 
                         <v-card-actions>
 
-              
+                          <v-btn absolute bottom  style="margin-top: auto"  color="orange" 
+                                 v-bind:to="{name: 'Subcategory', params: {name: card.Category} }">{{card.Category}}
+                          </v-btn>
                         </v-card-actions>
+
                         <br>
                         <br>
-                      </v-flex>
+                  
                     </v-card>
                     <v-spacer></v-spacer> <!--no use-->
                     <br><br>
@@ -68,7 +62,6 @@
             </v-card>
           </v-flex>
         </v-layout>
-
 
       </v-layout>
     </v-layout>
@@ -97,37 +90,37 @@
         ],
         cards:[ {
           
-          subject: 'Electonics',
+         Category: 'Electonics',
           photo: "static/Photos/electronics.jpg",
        },
        {
-            subject: 'Footwear',
+            Category: 'Footwear',
            photo: "static/Photos/footwear.jpeg",
        },
        {
           
-          subject: 'Fashion',
+          Category: 'Fashion',
           photo: "static/Photos/fashion.jpg",
        },
-       {  subject: 'Sports and Outdoors',
+       {  Category: 'Sports and Outdoors',
           photo: "static/Photos/sports.jpeg",
 
        },
        {
           
-          subject: 'Automotive',
+        Category: 'Automotive',
           photo: "static/Photos/automotive.jpeg",
        },
        { 
-          subject: 'Books',
+         Category: 'Books',
           photo: "static/Photos/boos.png",
        },
        {
           
-          subject: 'Beauty',
+         Category: 'Beauty',
           photo: "static/Photos/healthcare.png",
        },
-       {  subject: 'Home',
+       { Category: 'Home',
           photo: "static/Photos/home.jpg",
        }
          ] }
