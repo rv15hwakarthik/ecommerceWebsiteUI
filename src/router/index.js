@@ -6,7 +6,8 @@ import Products from '@/components/Products'
 import Subcategory from '@/components/Subcategory'
 import Signup from '@/components/Signup'
 import Merchant from '@/components/Merchant'
-
+import SProduct from '@/components/SingleProduct'
+import Cart from '@/components/Cart'
 Vue.use(Router)
 
 export default new Router({
@@ -33,15 +34,28 @@ export default new Router({
       component: Subcategory
     },
     {
-      path: '/products/:name',
+      path: '/products/:id',
       name: 'Products',
       component: Products
     },
     {
+      path: '/product/:id',
+      name: 'SProduct',
+      component: SProduct
+    },
+
+    {
       path: '/signup',
       name: 'Signup',
       component: Signup
-    }
+    },
+
+    {
+      path: '/cart/:id',
+      name: 'Cart',
+      component: Cart
+    },
+    
   ],
 
 })

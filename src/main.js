@@ -6,7 +6,8 @@ import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-
+import VuetifyNumberInput from '@jzolago/vuetify-number-input'
+Vue.use(VuetifyNumberInput);
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 
