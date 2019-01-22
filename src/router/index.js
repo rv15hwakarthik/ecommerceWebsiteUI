@@ -7,6 +7,9 @@ import Subcategory from '@/components/Subcategory'
 import Signup from '@/components/Signup'
 import Merchant from '@/components/Merchant'
 import EmailTemplate from '@/components/EmailTemplate'
+import Cart from '@/components/Cart'
+import OrderHistory from '@/components/OrderHistory'
+import Rating from '@/components/Rating'
 
 Vue.use(Router)
 
@@ -47,6 +50,21 @@ export default new Router({
       path: '/emailtemp',
       name: 'EmailTemplate',
       component: EmailTemplate
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
+    },
+    {
+      path: '/orderhistory',
+      name: 'OrderHistory',
+      component: OrderHistory
+    },
+    {
+      path: '/rating',
+      name: 'Rating',
+      component: Rating
     }
   ],
 
