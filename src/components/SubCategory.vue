@@ -1,11 +1,11 @@
 <template>
     <div class="text-xs-center padding_products" >
-        
+
         <!-- <div v-for="item in sscats" :key="item.name">
             <v-layout>
                 <v-flex xs12 sm6 md4 offset-md4>
                     <v-card>
-                        <v-img :src="item.photo" aspect-ratio="2.75"></v-img>                   
+                        <v-img :src="item.photo" aspect-ratio="2.75"></v-img>
                             <v-card-title primary-title class="justify-center">
                                 <div>
                                     <v-btn flat v-bind:to="{name: 'Products', params: {name: item.name} }"><h3 style="font-family:sans-serif">{{ item.name }}</h3></v-btn>
@@ -34,18 +34,18 @@
                         contain
                       >
                       </v-card-media>
-                 
+
 
                         <v-card-actions>
 
-                          <v-btn absolute bottom  style="margin-top: auto"  color="red" 
+                          <v-btn absolute bottom  style="margin-top: auto"  color="F2D6D6"
                                  v-bind:to="{name: 'Products', params: {name: item.name} }">{{item.name}}
                           </v-btn>
                         </v-card-actions>
 
                         <br>
                         <br>
-                  
+
                     </v-card>
                     <v-spacer></v-spacer>
                     <br><br>
@@ -66,37 +66,37 @@
     name: 'Subcategory',
 
     data() {
-      return {   
+      return {
        sscats: [
-            {   
+            {
                 photo: require('@/assets/10.jpg'),
                 name: 'TV'
             },
-             {   
+             {
                 photo: require('@/assets/10.jpg'),
                 name: 'FRIDGE'
             },
-             {   
-                photo: require('@/assets/10.jpg'), 
+             {
+                photo: require('@/assets/10.jpg'),
                 name: 'WASHING MACHINE'
             },
-            {   
+            {
                 photo: require('@/assets/10.jpg'),
                 name: 'AC'
             },
-            {   
+            {
                 photo: require('@/assets/10.jpg'),
                 name: 'TV'
             },
-             {   
+             {
                 photo: require('@/assets/10.jpg'),
                 name: 'FRIDGE'
             },
-             {   
-                photo: require('@/assets/10.jpg'), 
+             {
+                photo: require('@/assets/10.jpg'),
                 name: 'WASHING MACHINE'
             },
-            {   
+            {
                 photo: require('@/assets/10.jpg'),
                 name: 'AC'
             }

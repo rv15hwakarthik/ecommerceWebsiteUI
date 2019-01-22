@@ -20,7 +20,7 @@
     <v-divider></v-divider>
     <v-card-actions class="justify-space-between">
       <v-btn flat router-link to="/">No Thanks</v-btn>
-      <v-btn color="primary" flat router-link to="/">Rate Now</v-btn>
+      <v-btn color="primary" flat router-link to="/" @click="Rating" >Rate Now</v-btn>
     </v-card-actions>
 
 </div>
@@ -30,7 +30,14 @@
     name: "Rating",
     data: () => ({
       rating:""
-    })
+    }),
+  methods: {
+Rating : function(){
+  console.log(rating);
+
+}
+
+  }
   }
 </script>
 <style scoped>

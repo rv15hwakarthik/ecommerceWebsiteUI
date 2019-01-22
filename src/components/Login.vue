@@ -61,8 +61,6 @@ console.log(response.data);
   }
  }
 </script>
-<<<<<<< HEAD
-=======
 
 <style>
     .padding_login
@@ -70,4 +68,3 @@ console.log(response.data);
         margin-top: 252px;
     }
 </style>
->>>>>>> d3447def32343c54deff5693934a64d368fa713e

@@ -1,5 +1,6 @@
 <template>
-  <!-- <v-container> -->
+
+  <v-container>
 
     <v-layout >
       <v-layout row wrap>
@@ -44,7 +45,7 @@
 
                         <v-card-actions>
 
-                          <v-btn absolute bottom  style="margin-top: auto"  color="red"
+                          <v-btn absolute bottom  style="margin-top: auto"  color="F2D6D6"
                                  v-bind:to="{name: 'Subcategory', params: {name: card.Category} }">{{card.Category}}
                           </v-btn>
                         </v-card-actions>
@@ -64,7 +65,7 @@
 
       </v-layout>
     </v-layout>
-  <!-- </v-container> -->
+  </v-container>
 </template>
 
 <script>

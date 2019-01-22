@@ -33,6 +33,7 @@
       </v-container>
     </v-toolbar>
 <br><br><br><br><br><br><br>
+
   </div>
 </template>
 
@@ -52,4 +53,5 @@ export default {
 .font{
 font-family:sans-serif
 }
+
 </style>
