@@ -38,7 +38,7 @@
 
                         <v-card-actions>
 
-                          <v-btn absolute bottom  style="margin-top: auto"  color="F2D6D6"
+                          <v-btn absolute bottom  style="margin-top: auto"  color=""
                                  v-bind:to="{name: 'Products', params: {name: item.name} }">{{item.name}}
                           </v-btn>
                         </v-card-actions>

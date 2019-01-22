@@ -6,7 +6,7 @@ import Products from '@/components/Products'
 import Subcategory from '@/components/Subcategory'
 import Signup from '@/components/Signup'
 import Merchant from '@/components/Merchant'
-import Rating from '@/components/Rating'
+import EmailTemplate from '@/components/EmailTemplate'
 
 Vue.use(Router)
 
@@ -47,6 +47,11 @@ component: Rating
       path: '/signup',
       name: 'Signup',
       component: Signup
+    },
+    {
+      path: '/emailtemp',
+      name: 'EmailTemplate',
+      component: EmailTemplate
     }
   ],
 
