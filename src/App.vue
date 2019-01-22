@@ -14,7 +14,7 @@
           <v-text-field
             v-model="searchText"
             solo hide-details single-line full-width
-            >
+            style="border-radius:20%">
             </v-text-field>
         </v-toolbar-items>
       </v-flex>
@@ -25,8 +25,7 @@
         <v-btn flat router to="/signup"><v-icon left>supervisor_account</v-icon>sign up</v-btn>
       </v-toolbar-items>
       </v-layout>
-
-      <div style="margin-left:30px">
+      <div style="margin-left:60px">
   <img src="@/assets/cod.png" style="width=100px; height:50px;"><span style="margin-left:220px"/>
   <img src="@/assets/made.png" style="width=100px; height:50px;"><span style="margin-left:220px"/>
   <img src="@/assets/coviam4.png" style="width=100px; height:50px;"><span style="margin-left:220px"/>

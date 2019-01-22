@@ -8,6 +8,7 @@ import Signup from '@/components/Signup'
 import Merchant from '@/components/Merchant'
 import EmailTemplate from '@/components/EmailTemplate'
 import Rating from '@/components/Rating'
+import OrderHistory from '@/components/OrderHistory'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ component: Rating
       path: '/emailtemp',
       name: 'EmailTemplate',
       component: EmailTemplate
+    },
+    {
+      path: '/orderhistory',
+      name: 'OrderHistory',
+    component: OrderHistory
     }
   ],
 

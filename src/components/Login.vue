@@ -1,19 +1,19 @@
 <template>
+    <v-card-media
+        :src="src" height="650" width="500px,k">
     <div class="padding_login">
+        
         <div class="text-xs-center">
             <!-- <p style="font-size:200%; text-align:center">LOGIN USING GOOGLE</p> -->
             <v-form ref="form" v-model="valid" lazy-validation>
                 <v-layout>
-                    <v-flex sm12 md4></v-flex>
-                    <v-flex sm12 md4>
+                    <v-flex sm12 md4 offset-md1>
                         <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
                     </v-flex>
-                    <v-flex sm12 md4></v-flex>
                 </v-layout>
                 <br>
                 <v-layout>
-                    <v-flex sm12 md4></v-flex>
-                    <v-flex sm12 md4>
+                    <v-flex sm12 md4 offset-md1>
                         <v-text-field
                         v-model="password"
                         :type="'password'"
@@ -21,13 +21,18 @@
                         required
                         ></v-text-field>
                     </v-flex>
-                    <v-flex sm12 md4></v-flex>
                 </v-layout>
-                <br>
-                <v-btn @click="login" >Signin</v-btn>
+                <v-layout>
+                    <v-flex sm12 md4 offset-md1>
+                        <br>
+                        <v-btn @click="login" >Signin</v-btn>
+                    </v-flex>
+                </v-layout>
+                
             </v-form>
         </div>
     </div>
+     </v-card-media>
 </template>
 
 
@@ -41,7 +46,8 @@
   data () {
    return {
     email: '',
-    password: ''
+    password: '',
+    src: require("@/assets/back.jpg")
     }
   },
   methods: {
