@@ -2,10 +2,10 @@
   <div id="app" style="background-image: url('');">
     <router-view/>
     
-    <v-toolbar  fixed extended extension-height="70px">
+    <v-toolbar  fixed extended extension-height="70px" color="">
       <v-container class="font">
       <v-layout>
-      <v-toolbar-title><v-btn router to="/" style="font-size:160%;" active-class="" flat><div style="color:black">sabkuch.com</div></v-btn></v-toolbar-title>
+      <v-toolbar-title><v-btn router to="/" style="font-size:160%;" active-class="" flat><div style="color:black"><img :src="require('./assets/logo.png')" height="42" width="250"/></div></v-btn></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn flat router to="/products/all"> <v-icon left>video_label</v-icon>Products</v-btn>
