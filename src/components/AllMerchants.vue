@@ -15,6 +15,8 @@
                   >
                    <v-card >
           <br><h3>Sold By</h3>
+          <br>
+          <v-divider></v-divider>
          <v-flex  offset-sm1>
          <div> Name:<span class="blue--text ml-4">{{card.merchant.merchantName}}</span></div>
           <br>
@@ -23,8 +25,9 @@
            <div > Price:<span class="blue--text ml-4">{{card.price}}</span></div>
             <br>
            <div > Rating:<span class="blue--text ml-4">{{card.merchant.merchantRating}}<v-icon>star</v-icon></span></div>
-         </v-flex>  </v-card>
+         </v-flex>   <v-flex offset-sm6> <v-btn>View</v-btn></v-flex> </v-card>
           </v-flex>
+       
         <br>
       </v-card>
     </v-flex>
