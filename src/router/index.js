@@ -7,6 +7,7 @@ import Subcategory from '@/components/Subcategory'
 import Signup from '@/components/Signup'
 import Merchant from '@/components/Merchant'
 import EmailTemplate from '@/components/EmailTemplate'
+import Rating from '@/components/Rating'
 
 Vue.use(Router)
 

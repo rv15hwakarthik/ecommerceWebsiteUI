@@ -1,4 +1,5 @@
 <template>
+<div>
 
   <v-container>
 
@@ -66,6 +67,7 @@
       </v-layout>
     </v-layout>
   </v-container>
+</div>
 </template>
 
 <script>
