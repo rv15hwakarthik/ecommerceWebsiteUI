@@ -45,4 +45,7 @@ Rating : function(){
 width: 40%
 }
 </style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> fd223bea1d358109eb672526129acc5511d61aea

@@ -12,6 +12,7 @@ import Axios from 'axios'
   Vue.use(VeeValidate)
 
 Vue.use(Axios)
+
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 
