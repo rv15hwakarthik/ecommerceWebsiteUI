@@ -25,7 +25,7 @@
         <v-layout column>
           <v-flex xs3 sm4 >
 
-            <v-card>
+            <v-card >
               <v-container fluid grid-list-md>
                 <v-layout row wrap>
                   <v-flex md3

@@ -6,7 +6,7 @@
           <v-toolbar-title>
             <v-btn router to="/"  active-class flat>
               <div style="color:black">
-                <img :src="require('./assets/logo.png')" height="50" width="250">
+                <img :src="require('@/assets/logo.png')" height="50" width="250">
               </div>
             </v-btn>
           </v-toolbar-title>
@@ -65,11 +65,27 @@
       </v-container>
     </v-toolbar>
     <router-view/>
+    <v-footer
+    light
+    fixed
+    height="auto"
+  >
+  <div style="margin-left:60px">
+          <img :src="require('@/assets/logo.png')" style="width=100px; height:50px;">
+          <span style="margin-left:200px"/>
+          <img :src="require('@/assets/logo.png')" style="width=100px; height:50px;">
+          <span style="margin-left:250px"/>
+          <img :src="require('@/assets/logo.png')" style="width=100px; height:50px;">
+          <span style="margin-left:340px"/>
+          <img :src="require('@/assets/logo.png')" style="width=auto; height:50px;">
+        </div>
+
+  </v-footer>
   </div>
 </template>
 <script>
 export default {
-  name: "App",
+  name: "NavBarLogIn",
   data: () => ({
     descriptionLimit: 60,
     entries: [],

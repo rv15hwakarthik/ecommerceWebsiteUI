@@ -10,6 +10,9 @@ import EmailTemplate from '@/components/EmailTemplate'
 import Cart from '@/components/Cart'
 import OrderHistory from '@/components/OrderHistory'
 import Rating from '@/components/Rating'
+import ThankYou from '@/components/ThankYou'
+import NavBarLogIn from '@/components/NavBarLogIn'
+import NavBarLogOut from '@/components/NavBarLogOut'
 
 Vue.use(Router)
 
@@ -65,6 +68,21 @@ export default new Router({
       path: '/rating',
       name: 'Rating',
       component: Rating
+    },
+    {
+      path: '/thankyou',
+      name: 'ThankYou',
+      component: ThankYou
+    },
+    {
+      path: '/navbar',
+      name: 'NavBarLogIn',
+      component: NavBarLogIn
+    },
+    {
+      path: '/navbartwo',
+      name: 'NavBarLogOut',
+      component: NavBarLogOut
     }
   ],
 

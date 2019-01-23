@@ -2,11 +2,15 @@
   <v-card-media :src="src" height="650" width="500px,k">
     <div class="container">
       <router-view></router-view>
-      <div class="text-xs-center" style="margin-top:200px">
+      <div class="text-xs-center" style="margin-top:150px">
         <!-- <v-card class="elevation-12"> -->
         <!-- <v-card-text> -->
         <v-layout>
           <v-flex md4 offset-md1>
+            <v-card color="blue"><div style="color:white; text-align:left; font-family:sans-serif; font-size:250%; margin-left:28px; padding:5px; padding-top:20px"><b>Sign Up<v-icon>supervisor_account</v-icon></b></div>
+            <div style="color:white; text-align:left; font-family:sans-serif; font-size:180%; margin-left:28px; padding:5px; margin-top:15px; padding-bottom:25px">Get access to an exciting range of offers and products</div>
+            </v-card>
+            <v-card>
             <v-form @submit.prevent>
               <!-- <p style="font-family:sans-serif; font-size:220%; margin-bottom:40px"> REGISTER NOW</p> -->
               <v-text-field
@@ -36,7 +40,8 @@
             <!-- </v-card-text> -->
             <!-- <v-card-actions> -->
             <v-spacer></v-spacer>
-            <v-btn @click="signup" :to="'/login'">Signup</v-btn>
+            <v-btn @click="signup" :to="'/login'" style="background-color:#007bff; color:white; width:50%">Signup</v-btn>
+            </v-card>
           </v-flex>
         </v-layout>
         <!-- </v-card-actions> -->

@@ -1,9 +1,22 @@
 <template>
-<div class="container">
-  <router-view></router-view>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <div class="container">
+    <router-view></router-view>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <v-card-text>
-
       <h2>If you like shopping with us. please take few seconds in rating your experience. it really helps!!!</h2>
 
       <div class="text-sm-center mt-5">
@@ -20,28 +33,25 @@
     <v-divider></v-divider>
     <v-card-actions class="justify-space-between">
       <v-btn flat router-link to="/">No Thanks</v-btn>
-      <v-btn color="primary" flat router-link to="/" @click="Rating" >Rate Now</v-btn>
+      <v-btn color="primary" flat router-link to="/" @click="Rating">Rate Now</v-btn>
     </v-card-actions>
-
-</div>
+  </div>
 </template>
 <script>
-  export default {
-    name: "Rating",
-    data: () => ({
-      rating:""
-    }),
+export default {
+  name: "Rating",
+  data: () => ({
+    rating: ""
+  }),
   methods: {
-Rating : function(){
-  console.log(rating);
-
-}
-
+    Rating: function() {
+      console.log(rating);
+    }
   }
-  }
+};
 </script>
 <style scoped>
-.container{
-width: 40%
+.container {
+  width: 40%;
 }
 </style>

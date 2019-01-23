@@ -7,26 +7,24 @@
             <v-tabs v-model="active" color="#ededed" slider-color="red">
               <v-tab v-for="n in 3" :key="n" ripple>Item {{ n }}</v-tab>
               <v-tab-item v-for="n in 3" :key="n">
-                  <v-flex md12>
-                    <v-card>
-                        <v-card-media :src="src"></v-card-media>
-                    </v-card>
-                  </v-flex>
-                  <v-flex style="text-align:left; font-family:sans-serif">
-                        <p></p>
-                        <p> &nbsp; Product Name:</p> <br>
-                        <p> &nbsp; Product Quantity:</p> <br>
-                        <p> &nbsp; Product Price:</p> 
-                  </v-flex>
-                  <v-card-actions>
-
-         <v-btn>ORDER</v-btn>
-
-       </v-card-actions>
+                <v-flex md12>
+                  <v-card>
+                    <v-card-media :src="src"></v-card-media>
+                  </v-card>
+                </v-flex>
+                <v-flex style="text-align:left; font-family:sans-serif">
+                  <p></p>
+                  <p>&nbsp; Product Name:</p>
+                  <br>
+                  <p>&nbsp; Product Quantity:</p>
+                  <br>
+                  <p>&nbsp; Product Price:</p>
+                </v-flex>
+                <v-card-actions>
+                  <v-btn>ORDER</v-btn>
+                </v-card-actions>
               </v-tab-item>
             </v-tabs>
-
-            
           </div>
         </v-flex>
       </v-layout>
