@@ -5,20 +5,22 @@
         <v-flex style="background-color:#ccc" class="fonter" md4 offset-md4>
           <div>
             <v-tabs v-model="active" color="#ededed" slider-color="red">
-              <v-tab v-for="(item,n) in cartproducts" :key="n" ripple>Item {{ n }}</v-tab>
-              <v-tab-item  v-for="item in cartproducts" :key="item">
+              <v-tab v-for="(item,n) in items" :key="n" ripple>Item {{ n }}</v-tab>
+              <v-tab-item  v-for="item in items" :key="item">
                 <v-flex md12>
                   <v-card>
-                    <v-card-media :src="src"></v-card-media>
+                    <v-card-media :src="item.productImage"
+                        height="200px"
+                        contain></v-card-media>
                   </v-card>
                 </v-flex>
                 <v-flex style="text-align:left; font-family:sans-serif">
                   <p></p>
-                  <p>&nbsp; Product Name: {{cartproducts}}</p>
+                  <p>&nbsp; Product Name: {{item.productName}}</p>
                   <br>
-                  <p>&nbsp; Product Quantity:</p>
+                  <p>&nbsp; Product Quantity:{{item.productCount}}</p>
                   <br>
-                  <p>&nbsp; Product Price:</p>
+                  <p>&nbsp; Product Price:{{item.price}}</p>
                 </v-flex>
                 <v-card-actions>
                   <v-btn>ORDER</v-btn>
@@ -46,46 +48,13 @@ export default {
         {
           productId: "",
           productName: "",
-          description: "",
-          usp: "",
-          rating: "",
           productImage: require("@/assets/logo.png"),
-          brand: {
-            brandId: "",
-            brandName: ""
-          },
-          specification: {
-            specificationId: "",
-            color: "",
-            material: "",
-            pattern: "",
-            occasion: "",
-            idealFor: ""
-          },
+          productCount:'',
           price: ""
         }
-      ],
-       merchants: {
-        merchantProductId: '',
-        price: '',
-        salePrice: '',
-        stock: '',
-        productId: '',
-        merchant: {
-          merchantId: '',
-          merchantName: '',
-          merchantCity: '',
-          merchantRating: ''
-        }
-      },
-      cartproducts: [
-        {
-          cartProductId: '',
-          productId: '',
-          productCount: '',
-          merchantId: ''
-        }
       ]
+    
+      
     };
   },
   created: function() {
@@ -94,38 +63,16 @@ export default {
     console.log(this.$route.params.id);
        
     Axios.get(
-      "http://localhost:8080/cart/getAllproduct/4b726cbf-a5a1-4118-9d71-a239508b5172" 
+      "http://localhost:8080/cart//getAllproductincart/4b726cbf-a5a1-4118-9d71-a239508b5172" 
     )
       .then(response => {
-        this.cartproducts = response.data;
+        this.items = response.data;
         console.log(response.data);
       })
       .catch(error => {
         console.log(error);
       });
-    //   Axios.get(
-    //     "http://10.177.7.131:8003/products/getProduct/" + this.$route.params.id,
-    //     {}
-    //   )
-    //     .then(response => {
-    //       this.item = response.data;
-    //       console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    //     Axios.get(
-    //     "http://10.177.7.120:8080/getPriorityMerchant/" + this.$route.params.id,
-    //     {}
-    //   )
-    //     .then(response => {
-    //       this.merchants = response.data;
-    //       console.log(response.data);
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-     
+  
   },
   methods: {
     next() {

@@ -8,7 +8,7 @@
               <div offset-sm2>
                 <h1>{{item.productName}}</h1>
               </div>
-              <div>Brand:{{item.brandName}}</div>
+              <div>Brand:{{item.brand.brandName}}</div>
 
               <v-divider></v-divider>
             </v-flex>
@@ -125,6 +125,7 @@
 import Axios from "axios";
 import Vue from "vue";
 import menuuu from "@/components/AllMerchants";
+import VueLocalStorage from 'vue-localstorage'
 export default {
   name: "app",
   components: {
@@ -214,7 +215,7 @@ cart:{
           console.log(error);
         });
       Axios.get(
-        "http://41c338cb.ngrok.io/products/getProduct/" + this.$route.params.id,
+        "http://10.177.7.131:8003/products/getProduct/" + this.$route.params.id,
         {}
       )
         .then(response => {
@@ -225,7 +226,11 @@ cart:{
           console.log(error);
         });
     },
+    
    addtocart() {
+         var jwt = Vue.localStorage.get('token')
+       
+       
        var payload={ 'cart':this.cart,
            'productId':this.item.productId,
           'productCount':this.foo,
@@ -235,7 +240,8 @@ cart:{
         Axios.post('http://localhost:8080/cartproduct/add' , payload,
        {
               headers: {
-             'Content-Type': 'application/json'
+                   
+                    'Content-Type': 'application/json'
               }}
                
         

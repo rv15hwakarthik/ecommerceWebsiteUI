@@ -13,14 +13,15 @@
                     <h2>{{item.productName}}</h2>
 
                     <v-btn
-                      flat 
+                      flat
                       type="submit"
                       v-bind:to="{name: 'SProduct', params: {id: item.productId }}"
                     >View Product</v-btn>
                     <v-icon>mdi-anchor</v-icon>
 
-                    <s>price</s>
-                    Saleprice
+                    <s>{{item.marketRetailPrice}}</s>
+                    &nbsp;
+                    {{item.discountedPrice}}
                     <br>
                   </v-card-title>
                 </v-flex>
@@ -51,66 +52,31 @@ export default {
       items: [
         {
           productName: "",
-
-          productImage: require("@/assets/logo.png"),
-          Saleprice: "",
-          price: ""
-        },
-        {
-          productName: "",
-
-          productImage: require("@/assets/logo.png"),
-          Saleprice: "",
-          price: ""
-        },
-        {
-          productName: "",
-
-          productImage: require("@/assets/logo.png"),
-          Saleprice: "",
-          price: ""
-        },
-        {
-          productName: "",
-
-          productImage: require("@/assets/logo.png"),
-          Saleprice: "",
-          price: ""
-        },
-        {
-          productName: "",
-
-          productImage: require("@/assets/logo.png"),
-          Saleprice: "",
-          price: ""
-        },
-        {
-          productName: "",
-
-          productImage: require("@/assets/logo.png"),
-          Saleprice: "",
-          price: ""
+            productId:'',
+          productImage: "",
+          marketRetailPrice: "",
+          discountedPrice: ""
         }
       ]
     };
-  }
-  //   created: function () {
-  //     console.log('id is called')
+  },
+    created: function () {
+      console.log('id is called')
 
-  //     console.log(this.$route.params.id)
+      console.log(this.$route.params.id)
 
-  //       Axios.get('http://10.177.7.131:8003/products/getAllProductsFromSubCategories/' + this.$route.params.id, {
+        Axios.get('http://10.177.7.131:8003/products/shortListing?subCategoryName=' + this.$route.params.id, {
 
-  //       })
-  //         .then((response) => {
-  //           this.items = response.data
-  //           console.log(response.data)
-  //         })
-  //         .catch((error) => {
-  //           console.log(error)
-  //         })
+        })
+          .then((response) => {
+            this.items = response.data
+            console.log(response.data)
+          })
+          .catch((error) => {
+            console.log(error)
+          })
 
-  //   }
+    }
   //   methods: {
   //     addtocart(id) {
   //       Axios.post(

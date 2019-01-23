@@ -31,12 +31,12 @@
                   <v-flex md3
                   v-bind="{ [`xs${card.flex}`]: true }"
                     v-for="card in cards"
-                    :key="card.title"
+                    :key="card.categoryId"
                   >
 
                     <v-card width="250" height="250">
                       <v-card-media
-                        :src="card.photo"
+                        :src="card.categoryImageUrl"
                         height="200px"
                         contain
                       >
@@ -46,7 +46,7 @@
                         <v-card-actions>
 
                           <v-btn absolute bottom  style="margin-top: auto"  color="red" 
-                                 v-bind:to="{name: 'Subcategory', params: {name: card.Category} }">{{card.Category}}
+                                 v-bind:to="{name: 'Subcategory', params: {id: card.categoryName} }">{{card.categoryName}}
                           </v-btn>
                         </v-card-actions>
 
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-  
+  import Axios from 'axios';
   export default {
    name: "Home",
     // components: {'nav-Menu': menuuu},
@@ -88,42 +88,13 @@
             src: require("@/assets/discount12.png")
           }
         ],
-        cards:[ {
-          
-         Category: 'Electonics',
-          photo: require("@/assets/electronics.jpg"),
-       },
-       {
-            Category: 'Footwear',
-           photo: require("@/assets/footwear.jpeg"),
-       },
-       {
-          
-          Category: 'Fashion',
-          photo: require("@/assets/fashion.jpg"),
-       },
-       {  Category: 'Sports and Outdoors',
-          photo: require("@/assets/sports.jpeg"),
-
-       },
-       {
-          
-        Category: 'Automotive',
-          photo: require("@/assets/automotive.jpeg"),
-       },
-       { 
-         Category: 'Books',
-          photo: require("@/assets/boos.png"),
-       },
-       {
-          
-         Category: 'Beauty',
-          photo: require("@/assets/healthcare.png"),
-       },
-       { Category: 'Home',
-          photo: require("@/assets/home.jpg"),
-       }
-         ] }
+      cards:[ {
+        categoryId:"",
+        categoryName: "",
+       categoryImageUrl: "",
+      }
+        ]
+          }
   },
   created: function () {
      console.log('hello');

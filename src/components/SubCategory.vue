@@ -24,12 +24,12 @@
                   <v-flex md3
                   v-bind="{ [`xs${item.flex}`]: true }"
                     v-for="item in sscats"
-                    :key="item.name"
+                    :key="item.subcategoryId"
                   >
 
                     <v-card width="250" height="250">
                       <v-card-media
-                        :src="item.photo"
+                        :src="item.subcategoryImage"
                         height="200px"
                         contain
                       >
@@ -39,7 +39,7 @@
                         <v-card-actions>
 
                           <v-btn absolute bottom  style="margin-top: auto"  color="red" 
-                                 v-bind:to="{name: 'Products', params: {name: item.name} }">{{item.name}}
+                                 v-bind:to="{name: 'Products', params: {id:item.subcategoryName} }">{{item.subcategoryName}}
                           </v-btn>
                         </v-card-actions>
 
@@ -60,7 +60,7 @@
 
 
 <script>
-//   import Axios from 'axios'
+import Axios from 'axios'
 
   export default {
     name: 'Subcategory',
@@ -68,47 +68,20 @@
     data() {
       return {   
        sscats: [
-            {   
-                photo: require('@/assets/10.jpg'),
-                name: 'TV'
-            },
-             {   
-                photo: require('@/assets/10.jpg'),
-                name: 'FRIDGE'
-            },
-             {   
-                photo: require('@/assets/10.jpg'), 
-                name: 'WASHING MACHINE'
-            },
-            {   
-                photo: require('@/assets/10.jpg'),
-                name: 'AC'
-            },
-            {   
-                photo: require('@/assets/10.jpg'),
-                name: 'TV'
-            },
-             {   
-                photo: require('@/assets/10.jpg'),
-                name: 'FRIDGE'
-            },
-             {   
-                photo: require('@/assets/10.jpg'), 
-                name: 'WASHING MACHINE'
-            },
-            {   
-                photo: require('@/assets/10.jpg'),
-                name: 'AC'
-            }
+          {
+        subcategoryId:"" ,
+        subcategoryName: "",
+        subcategoryImage: "",
+    },
         ]
       }
     },
    created: function () {
      console.log('hello');
-     Axios.get('http://10.177.7.131:8003/products/getAllCategories')
+     Axios.get('http://10.177.7.131:8003/products/getSubCategoriesByCategory/'+this.$route.params.id)
        .then((response) => {
            console.log(response);
-         this.cards = response.data;
+         this.sscats = response.data;
 
        })
        .catch((error) => {

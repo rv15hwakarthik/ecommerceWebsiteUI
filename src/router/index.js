@@ -29,7 +29,7 @@ export default new Router({
       component: Login
     },
     {
-      path: '/Subcategory/:name',
+      path: '/Subcategory/:id',
       name: 'Subcategory',
       component: Subcategory
     },
@@ -57,5 +57,5 @@ export default new Router({
     },
     
   ],
-
+  mode: 'history'
 })

@@ -34,6 +34,7 @@
 <script>
 
  import Axios from 'axios'
+ import VueLocalStorage from 'vue-localstorage'
  export default {
     name: "Login",
 
@@ -45,19 +46,20 @@
     }
   },
   methods: {
-   login: function () {
-    console.log(this.email)
-    Axios.post('http://10.177.7.137:8080/user/login', {
-     password: this.password,
-     email: this.email,
-    }).then(response => {
-console.log(response.data);
-    }).catch(error => {
-     console.log('Error login')
-     console.log(error)
-     //this.$router.push('/Admin/login')
-    })
-   }
+    login: function () {
+      Axios.post('http://localhost:8000/user/login/web', {
+        password: this.password,
+        email: this.email,
+      }).then(response => {
+        Vue.localStorage.set('token', response.data)
+        localStorage.getItem('token')
+        this.$router.push('/')
+      }).catch(error => {
+        console.log(error)
+        window.alert('Please enter correct username and Password')
+         this.$router.push('/login')
+      })
+    }
   }
  }
 </script>
