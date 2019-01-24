@@ -6,7 +6,7 @@
                 <v-layout>
                     <v-flex sm12 md4></v-flex>
                     <v-flex sm12 md4>
-                        <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                        <v-text-field v-model="email"  label="E-mail" required></v-text-field>
                     </v-flex>
                     <v-flex sm12 md4></v-flex>
                 </v-layout>
@@ -16,7 +16,7 @@
                     <v-flex sm12 md4>
                         <v-text-field
                         v-model="password"
-                        :type="'password'"
+                       
                         label="Password"
                         required
                         ></v-text-field>
@@ -35,32 +35,33 @@
 
  import Axios from 'axios'
  import VueLocalStorage from 'vue-localstorage'
+ import Vue from 'vue'
+   Vue.use(VueLocalStorage)
  export default {
     name: "Login",
-
-
   data () {
    return {
     email: '',
     password: ''
     }
   },
-  methods: {
     login: function () {
-      Axios.post('http://localhost:8000/user/login/web', {
-        password: this.password,
-        email: this.email,
-      }).then(response => {
-        Vue.localStorage.set('token', response.data)
-        localStorage.getItem('token')
-        this.$router.push('/')
-      }).catch(error => {
-        console.log(error)
-        window.alert('Please enter correct username and Password')
-         this.$router.push('/login')
-      })
-    }
-  }
+        console.log(this.student_email)
+        Axios.post('http://localhost:8080/user/login/web', {
+          password: this.password,
+         email: this.email
+        }).then(response => {
+          Vue.localStorage.set('token', response.data.token)
+          console.log(response.data.token)
+          localStorage.getItem('token')
+          this.$router.push('/')
+        }).catch(error => {
+          console.log('Error login')
+          console.log(error)
+          window.alert('Please enter correct username and Password')
+          this.$router.push('/login')
+        })
+      }
  }
 </script>
 

@@ -6,7 +6,8 @@
           <v-flex xs12 offset-sm1>
             <v-flex justify-center>
               <div offset-sm2>
-                <h1>{{item.productName}}</h1>
+                <h1>{{item.productName}}</h1>    {{overallrate}}<v-icon>star</v-icon>
+
               </div>
               <div>Brand:{{item.brand.brandName}}</div>
 
@@ -18,14 +19,17 @@
                 <br>
                 <v-card-media :src="item.productImage" height="150px" width="300px" contain></v-card-media>
               </v-flex>
-              <v-flex xs8 offset-sm2>
+              <v-flex xs8 offset-sm1>
                 <v-card-title primary-title>
                   <div>
-                    <v-flex offset-sm2>
+                    <v-flex offset-sm1>
                       <h1>
                         <div class="headline">
-                          Price:
-                          {{merchants.price}}
+                          Actual Price
+                          Rs.<s>{{merchants.price}}</s>
+                          <br>
+                      Discounted Price:Rs.{{merchants.salePrice}}
+                    
                         </div>
                       </h1>
                     </v-flex>
@@ -82,8 +86,14 @@
           <v-card flat="true">
             <h2>Ratings And Reviews</h2>
             <br>
-        
-       {{item.rating}}
+        <v-flex v-bind="{ [`xs${item.flex}`]: true }" v-for="rate in item.userReviews" :key="rate.productId">
+       <v-card>
+           {{rate.userComment}}
+           <span class="blue--text ml-4">
+             {{rate.userRatingOnProduct}} 
+              <v-icon>star</v-icon>
+            </span></v-card>
+      </v-flex>
           </v-card>
         </v-flex>
       </v-card>
@@ -125,7 +135,7 @@
 import Axios from "axios";
 import Vue from "vue";
 import menuuu from "@/components/AllMerchants";
-import VueLocalStorage from 'vue-localstorage'
+import VueLocalStorage from "vue-localstorage";
 export default {
   name: "app",
   components: {
@@ -134,40 +144,46 @@ export default {
   data() {
     return {
       foo: 1,
+      overallrate:"",
       qty: 1,
-cart:{
-    
-    cartId:''
-},
+      discount:"",
+      cart: {
+        cartId: ""
+      },
       globalPrice: 0,
       merchants: {
-        merchantProductId: '',
-        price: '',
-        salePrice: '',
-        stock: '',
-        productId: '',
+        merchantProductId: "",
+        price: "",
+        salePrice: "",
+        stock: "",
+        productId: "",
         merchant: {
-          merchantId: '',
-          merchantName: '',
-          merchantCity: '',
-          merchantRating: ''
+          merchantId: "",
+          merchantName: "",
+          merchantCity: "",
+          merchantRating: ""
         }
       },
       item: {
-        productId: '',
-        productName: '',
-        description:
-         '',
-        usp: '',
-        rating: '',
+        productId: "",
+        productName: "",
+        description: "",
+        usp: "",
+        rating: "",
         productImage: require("@/assets/fashion.jpg"),
         brand: {
-          brandId: '',
-          brandName: ''
+          brandId: "",
+          brandName: ""
         },
-        specification: {
+        specification: {},
+        userReviews: [
+          {
+            productId: '',
+            userComment: '',
+            userRatingOnProduct: ''
+          }
           
-        }
+        ]
       },
       globalCost: 0
     };
@@ -176,7 +192,7 @@ cart:{
   methods: {
     updateQuantity() {
       this.globalCost = this.globalPrice;
-      console.log(this.item.price);
+      
     },
     increment() {
       this.foo = parseInt(this.foo, 10) + 1;
@@ -198,18 +214,30 @@ cart:{
       )
         .then(response => {
           this.merchants = response.data;
+          
+        })
+        .catch(error => {
+       
+        });
+        
+ Axios.get(
+        "http://10.177.7.131:8003/products/getProductRating/" + this.$route.params.id,
+       )
+        .then(response => {
+         this.overallrate=response.data
           console.log(response.data);
         })
         .catch(error => {
           console.log(error);
         });
-   Axios.get(
-        "http://localhost:8080/cart/getcartId/4b726cbf-a5a1-4118-9d71-a239508b5172" ,
-        {}
+
+      Axios.get(
+        "http://localhost:8080/cart/getcartId/4b726cbf-a5a1-4118-9d71-a239508b5172",
+      
       )
         .then(response => {
           this.cart.cartId = response.data;
-          console.log(response.data);
+        
         })
         .catch(error => {
           console.log(error);
@@ -220,38 +248,31 @@ cart:{
       )
         .then(response => {
           this.item = response.data;
-          console.log(response.data);
+          
         })
         .catch(error => {
           console.log(error);
         });
     },
+
+    addtocart() {
+      var payload = {
+        cart: this.cart,
+        productId: this.item.productId,
+        productCount: this.foo,
+        merchantId: this.merchants.merchant.merchantId
+      };
     
-   addtocart() {
-         var jwt = Vue.localStorage.get('token')
-       
-       
-       var payload={ 'cart':this.cart,
-           'productId':this.item.productId,
-          'productCount':this.foo,
-        'merchantId':this.merchants.merchant.merchantId
+      Axios.post("http://localhost:8080/cartproduct/add", payload, {
+        headers: {
+          "Content-Type": "application/json"
         }
-      
-        Axios.post('http://localhost:8080/cartproduct/add' , payload,
-       {
-              headers: {
-                   
-                    'Content-Type': 'application/json'
-              }}
-               
-        
-        )
-          .then(console.log(fd))
-          .catch(error => {
-            console.log(error.response);
-          });
-      } 
-    
+      })
+        .then()
+        .catch(error => {
+          console.log(error.response);
+        });
+    }
   },
   mounted() {
     this.getDetail();

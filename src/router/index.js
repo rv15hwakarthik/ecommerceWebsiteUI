@@ -8,6 +8,9 @@ import Signup from '@/components/Signup'
 import Merchant from '@/components/Merchant'
 import SProduct from '@/components/SingleProduct'
 import Cart from '@/components/Cart'
+import NewP from '@/components/ProductNew'
+import Orderh from '@/components/orderhistory'
+import Orderhistory from '@/components/Productorder'
 Vue.use(Router)
 
 export default new Router({
@@ -22,6 +25,21 @@ export default new Router({
       path: '/merchant',
       name: 'Merchant',
       component: Merchant
+    },
+    {
+      path: '/p',
+      name: 'NewP',
+      component: NewP
+    },
+    {
+      path: '/order',
+      name: 'Orderh',
+      component: Orderh
+    },
+    {
+      path: '/allorder/:id',
+      name: 'Orderhistory ',
+      component: Orderhistory 
     },
     {
       path: '/login',
@@ -53,8 +71,10 @@ export default new Router({
     {
       path: '/cart/:id',
       name: 'Cart',
-      component: Cart
+      component: Cart,
+      meta: { requiresAuth1: true}
     },
+    
     
   ],
   mode: 'history'

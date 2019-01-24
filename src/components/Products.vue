@@ -77,23 +77,6 @@ export default {
           })
 
     }
-  //   methods: {
-  //     addtocart(id) {
-  //       Axios.post(
-  //         "http://192.168.137.1:3000/student/course/enrollment/" + id,
-  //         null,
-  //         {
-  //           headers: {
-  //             Authorization: "bearer " + Vue.localStorage.get("token")
-  //           }
-  //         }
-  //       )
-  //         .then(r => console.log("r: ", JSON.stringify(r, null, 2)))
-  //         .catch(error => {
-  //           console.log(error.response);
-  //         });
-  //       //   window.alert('enrolled.')
-  //     }
-  //   }
+  
 };
 </script>

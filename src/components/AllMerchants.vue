@@ -52,7 +52,7 @@ export default {
         stock: '',
         productId: '',
         merchant: {
-          merchantId: "",
+         merchantId: "",
           merchantName: '',
           merchantCity: '',
           merchantRating: ''
