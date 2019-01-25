@@ -83,7 +83,10 @@ export default {
     async getDetail() {
         
       Axios.get(
-        "http://localhost:8080/cart/getAllproductincart/4b726cbf-a5a1-4118-9d71-a239508b5172"
+        "http://localhost:8080/cart/getAllproductincart/cc898d6f-678d-432a-b128-ad05d9829e69",{
+        headers: {
+              "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+            }}
       )
         .then(response => {
           this.items = response.data;
@@ -91,16 +94,21 @@ export default {
         })
         .catch(error => {
           console.log(error);
+          // this.$router.push('/login')
         });
       Axios.get(
-        "http://localhost:8080/cart/getcartId/4b726cbf-a5a1-4118-9d71-a239508b5172",
-        {}
+        "http://localhost:8080/cart/getcartId/cc898d6f-678d-432a-b128-ad05d9829e69",{
+        headers: {
+
+              "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+            }}
       )
         .then(response => {
           this.cart.cartId = response.data;
         })
         .catch(error => {
           console.log(error);
+       //    this.$router.push('/login')
         });
 
   
@@ -125,11 +133,12 @@ export default {
       if (confirm("Are you sure to remove this item?")) {
        
         Axios.delete(
-          "http://localhost:8080/cartproduct/delete/4b726cbf-a5a1-4118-9d71-a239508b5172/" +
+          "http://localhost:8080/cartproduct/delete/cc898d6f-678d-432a-b128-ad05d9829e69/" +
             _id,
           {
             headers: {
-              // 'Authorization': 'bearer ' + Vue.localStorage.get('token')
+
+              "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
             }
           }
         )
@@ -139,6 +148,7 @@ export default {
           })
           .catch(function(error) {
             alert("Try Deleting again");
+            // this.$router.push('/login')
           });
         window.location.reload();
       }
@@ -151,26 +161,32 @@ export default {
         productCount: item.productCount,
         merchantId: item.merchantId
       };
-
-      console.log(item.merchantId);
+  console.log(item.merchantId);
       Axios.put(" http://localhost:8080/cartproduct/update", payload, {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
         }
       })
         .then(console.log(fd))
         .catch(error => {
           console.log(error.response);
+         //   this.$router.push('/login')
         });
     },
  deleteAll(){
        Axios.delete(
-        "http://localhost:8080/cart/deleteproduct/4b726cbf-a5a1-4118-9d71-a239508b5172"
+        "http://localhost:8080/cart/deleteproduct/cc898d6f-678d-432a-b128-ad05d9829e69",{
+         headers: {
+          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+        }  
+        }
       )
         .then(res => {
   
         })
         .catch(function(error) {
+         //   this.$router.push('/login')
         });
            window.location.reload();
  },
@@ -182,7 +198,7 @@ export default {
   }     //  console.log( orderProducts.productId[i])};
       var ordert = {
         userId: "4b726cbf-a5a1-4118-9d71-a239508b5172",
-        orderPlacedDate:new Date().toISOString().substr(0, 10),
+        orderPlacedDate:new Date().toISOString().substr(0, 19),
        orderProducts:this.orderProducts
       };
 
@@ -195,6 +211,7 @@ export default {
         })
         .catch(error => {
           console.log(error.response);
+        //    this.$router.push('/login')
         });
          Axios.get("http://localhost:8080/send" 
        )

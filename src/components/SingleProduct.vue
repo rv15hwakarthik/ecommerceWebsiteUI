@@ -1,152 +1,127 @@
 <template>
   <v-container fluid style="margin-top:150px;">
+    <Nav></Nav>
+    <v-flex xs12 sm10 md8>
+      <v-toolbar color="#337ab7" dark>
+        <v-toolbar-title>Product Details</v-toolbar-title>
+      </v-toolbar>
+    </v-flex>
     <v-layout row wrap>
-      <v-card width="900px">
-        <v-layout row>
-          <v-flex xs12 offset-sm1>
-            <v-flex justify-center>
-              <div offset-sm2>
-                <h1>{{item.productName}}</h1>    {{overallrate}}<v-icon>star</v-icon>
+      <v-card flat>
+        <v-layout row wrap>
+          <v-flex xs6 sm4 md5>
+            <v-card flat class="rounded-card">
+              <v-img class="white--text" height="450px" width="auto" :src="item.productImage"></v-img>
+            </v-card>
+          </v-flex>
 
-              </div>
-              <div>Brand:{{item.brand.brandName}}</div>
+          <v-flex xs4 sm4 md6 offset-sm1>
+            <v-card-text>
+              <h3>{{item.productName}}</h3>
+              <b>{{overallrate}}</b>
+              <v-icon style="color:#33691E;">star</v-icon>
+              <b>{{item.brand.brandName}}</b>
+              <br>
+              <strike>Rs.{{merchants.price}}</strike>&nbsp;&nbsp;
+              <i>Rs.{{merchants.salePrice}}</i>&nbsp;&nbsp;
+              <h3>Description</h3>
+              <br>
+              {{item.description}}
+              <br>
+              <br>
+              <br>
+              <br>
+              <h3>Features</h3>
+              <br>
+              <li v-for="(ite,i) in item.specification" :key="i">{{i}} : {{ite}}</li>
+              <br>
 
-              <v-divider></v-divider>
-            </v-flex>
-
-            <v-layout row>
-              <v-flex xs6>
-                <br>
-                <v-card-media :src="item.productImage" height="150px" width="300px" contain></v-card-media>
-              </v-flex>
-              <v-flex xs8 offset-sm1>
-                <v-card-title primary-title>
-                  <div>
-                    <v-flex offset-sm1>
-                      <h1>
-                        <div class="headline">
-                          Actual Price
-                          Rs.<s>{{merchants.price}}</s>
-                          <br>
-                      Discounted Price:Rs.{{merchants.salePrice}}
-                    
-                        </div>
-                      </h1>
-                    </v-flex>
-                    <v-divider></v-divider>
-                    <br>
-                    <v-flex>
-                      <v-text-field
-                        prepend-icon="remove"
-                        :prepend-icon-cb="decrement"
-                        append-icon="add"
-                        v-model="foo"
-                        label="Quantity"
-                        :append-icon-cb="increment"
-                      ></v-text-field>
-                    </v-flex>
-                    <v-btn
-                      color="orange"
-                      v-bind:to="{name: 'Cart', params: {id: item.productId }}"
-                      @click="addtocart"
-                    >Add To Cart</v-btn>
-                  </div>
-                </v-card-title>
-              </v-flex>
-            </v-layout>
+              <v-btn
+                round
+                color="#FF8C00"
+               
+                @click="addtocart"
+              >
+                <b>Add To Cart</b>
+              </v-btn>
+            </v-card-text>
           </v-flex>
         </v-layout>
 
         <v-layout row>
-          <v-flex offset-sm1>
-            <v-card-title primary-title>
-              <div class="text--black">
-                <div>
-                  <h2>Features</h2>
-                  <li v-for="(ite,i) in item.specification" :key="i">{{i}} : {{ite}}</li>
-                </div>
-                <br>
+          <v-flex xs6 style="margin-top:50px;">
+            <v-toolbar color="#B3E5FC" dark>
+              <v-toolbar-title>
+                <h5 style="color=#01579B">Product Reviews and Ratings by various Customers</h5>
+              </v-toolbar-title>
+            </v-toolbar>
 
-                <br>
-              </div>
-            </v-card-title>
-          </v-flex>
-          <v-flex offset-sm1>
-            <v-card-title>
-              <div>
-                <h2>Description</h2>
-                <br>
-                {{item.description}}
-                <br>
-              </div>
-            </v-card-title>
+            <v-card flat>
+              <v-flex offset-sm1>
+                <v-flex
+                  v-bind="{ [`xs${item.flex}`]: true }"
+                  v-for="rate in item.userReviews"
+                  :key="rate.productId"
+                >
+                  <v-card flat>
+                    {{rate.userComment}}
+                    <span class="blue--text ml-4">
+                      {{rate.userRatingOnProduct}}
+                      <v-icon>star</v-icon>
+                    </span>
+                  </v-card>
+                </v-flex>
+              </v-flex>
+            </v-card>
           </v-flex>
         </v-layout>
-        <v-flex offset-sm1>
-          <v-card flat="true">
-            <h2>Ratings And Reviews</h2>
-            <br>
-        <v-flex v-bind="{ [`xs${item.flex}`]: true }" v-for="rate in item.userReviews" :key="rate.productId">
-       <v-card>
-           {{rate.userComment}}
-           <span class="blue--text ml-4">
-             {{rate.userRatingOnProduct}} 
-              <v-icon>star</v-icon>
-            </span></v-card>
-      </v-flex>
-          </v-card>
-        </v-flex>
       </v-card>
-      <v-divider></v-divider>
-      <v-flex>
-        <v-card height="200px" width="300px" flat="true">
-          <h2>Merchant Info
-            <br>Sold By
-          </h2>
-          <br>
-          <div>
-            Name:
-            <span class="blue--text ml-4">{{merchants.merchant.merchantName}}</span>
-          </div>
-          <div>
-            City:
-            <span class="blue--text ml-4">{{merchants.merchant.merchantCity}}</span>
-          </div>
 
-          <div>
-            Rating:
-            <span class="blue--text ml-4">
-              {{merchants.merchant.merchantRating}}
-              <v-icon>star</v-icon>
-            </span>
-          </div>
-        </v-card>
-        <br>
-        <br>
+      <v-flex xs3 sm2 md3 offset-sm1 >
+          <v-card flat>
+            <v-toolbar color="#faebcc" dark>
+              <v-toolbar-title>
+                <b style="color:black;">Merchant Information</b>
+              </v-toolbar-title>
+            </v-toolbar>
+            <v-card-text>
+              <h2>
+                <b>{{merchants.merchant.merchantName}}</b>
+              </h2>
 
-        <v-card height="200px" width="300px" flat="true">
-          <merchant></merchant>
-        </v-card>
+              <b>{{merchants.merchant.merchantCity}}
+                {{merchants.merchant.merchantRating}}</b>
+              <v-icon style="color:#33691E;">star</v-icon>
+
+              <br>
+              <v-alert :value="true" color="black" background-color="#E6EE9C" icon="info" outline>
+                <p>Merchant Rating is calculated on various factors and algorithm designed by SabKuch</p>
+              </v-alert>
+              <br>
+            </v-card-text>
+          </v-card>
+       
       </v-flex>
+       
     </v-layout>
   </v-container>
 </template>
 <script>
 import Axios from "axios";
 import Vue from "vue";
-import menuuu from "@/components/AllMerchants";
+import nav from "@/components/Nav";
 import VueLocalStorage from "vue-localstorage";
 export default {
   name: "app",
   components: {
-    merchant: menuuu
+    Nav:nav
   },
   data() {
     return {
       foo: 1,
-      overallrate:"",
+      overallrate: "",
       qty: 1,
-      discount:"",
+      discount: "",
       cart: {
         cartId: ""
       },
@@ -178,11 +153,10 @@ export default {
         specification: {},
         userReviews: [
           {
-            productId: '',
-            userComment: '',
-            userRatingOnProduct: ''
+            productId: "",
+            userComment: "",
+            userRatingOnProduct: ""
           }
-          
         ]
       },
       globalCost: 0
@@ -192,7 +166,6 @@ export default {
   methods: {
     updateQuantity() {
       this.globalCost = this.globalPrice;
-      
     },
     increment() {
       this.foo = parseInt(this.foo, 10) + 1;
@@ -214,17 +187,15 @@ export default {
       )
         .then(response => {
           this.merchants = response.data;
-          
         })
-        .catch(error => {
-       
-        });
-        
- Axios.get(
-        "http://10.177.7.131:8003/products/getProductRating/" + this.$route.params.id,
-       )
+        .catch(error => {});
+
+      Axios.get(
+        "http://10.177.7.131:8003/products/getProductRating/" +
+          this.$route.params.id
+      )
         .then(response => {
-         this.overallrate=response.data
+          this.overallrate = response.data;
           console.log(response.data);
         })
         .catch(error => {
@@ -232,23 +203,30 @@ export default {
         });
 
       Axios.get(
-        "http://localhost:8080/cart/getcartId/4b726cbf-a5a1-4118-9d71-a239508b5172",
-      
+        "http://localhost:8080/cart/getcartId/cc898d6f-678d-432a-b128-ad05d9829e69",{
+        headers: {
+          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+          
+        }}
       )
         .then(response => {
           this.cart.cartId = response.data;
-        
         })
         .catch(error => {
           console.log(error);
+          
         });
       Axios.get(
-        "http://10.177.7.131:8003/products/getProduct/" + this.$route.params.id,
-        {}
+        "http://10.177.7.131:8003/products/getProduct/" + this.$route.params.id,{
+ headers: {
+          "Content-Type": "application/json",
+       
+        }
+        }
+        
       )
         .then(response => {
           this.item = response.data;
-          
         })
         .catch(error => {
           console.log(error);
@@ -262,15 +240,20 @@ export default {
         productCount: this.foo,
         merchantId: this.merchants.merchant.merchantId
       };
-    
+
       Axios.post("http://localhost:8080/cartproduct/add", payload, {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
         }
       })
-        .then()
+        .then(
+              this.$router.push('/cart/'+this.item.productId)
+
+        )
         .catch(error => {
           console.log(error.response);
+           this.$router.push('/login')
         });
     }
   },

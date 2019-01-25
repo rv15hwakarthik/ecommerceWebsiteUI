@@ -1,73 +1,75 @@
 <template>
-    <div class="padding_login">
-        <div class="text-xs-center">
-            <!-- <p style="font-size:200%; text-align:center">LOGIN USING GOOGLE</p> -->
-            <v-form ref="form" v-model="valid" lazy-validation>
-                <v-layout>
-                    <v-flex sm12 md4></v-flex>
-                    <v-flex sm12 md4>
-                        <v-text-field v-model="email"  label="E-mail" required></v-text-field>
-                    </v-flex>
-                    <v-flex sm12 md4></v-flex>
-                </v-layout>
-                <br>
-                <v-layout>
-                    <v-flex sm12 md4></v-flex>
-                    <v-flex sm12 md4>
-                        <v-text-field
-                        v-model="password"
-                       
-                        label="Password"
-                        required
-                        ></v-text-field>
-                    </v-flex>
-                    <v-flex sm12 md4></v-flex>
-                </v-layout>
-                <br>
-                <v-btn @click="login" >Signin</v-btn>
-            </v-form>
-        </div>
-    </div>
+  <v-container>
+
+
+    <v-spacer></v-spacer>
+    <v-content>
+      <v-container fluid fill-height>
+
+        <v-layout align-center justify-center>
+          <v-flex xs12 sm8 md4>
+            <v-card class="elevation-12">
+              <v-toolbar color="primary">
+                <v-toolbar-title > Login form</v-toolbar-title>
+                <v-spacer></v-spacer>
+
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field prepend-icon="person" name="email" label="email ID" type="text" v-model="email"></v-text-field>
+                  <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" v-model="password"></v-text-field>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" @click="login" >Login</v-btn>
+              </v-card-actions>
+            </v-card>
+        
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+
+  </v-container>
 </template>
 
-
 <script>
+  import Axios from 'axios'
+  import Vue from 'vue'
+ 
+  import VueLocalStorage from 'vue-localstorage'
+  Vue.use(VueLocalStorage)
+  export default {
+    name: 'app',
 
- import Axios from 'axios'
- import VueLocalStorage from 'vue-localstorage'
- import Vue from 'vue'
-   Vue.use(VueLocalStorage)
- export default {
-    name: "Login",
-  data () {
-   return {
-    email: '',
+    data () {
+      return {
+      email: '',
     password: ''
-    }
-  },
-    login: function () {
-        console.log(this.student_email)
-        Axios.post('http://localhost:8080/user/login/web', {
+      }
+    },
+    methods: {
+      login: function () {
+        console.log(this.email)
+        Axios.post('http://localhost:8000/user/login/web', {
           password: this.password,
-         email: this.email
+          email: this.email
         }).then(response => {
-          Vue.localStorage.set('token', response.data.token)
-          console.log(response.data.token)
-          localStorage.getItem('token')
-          this.$router.push('/')
+          console.log(response.data)
+
         }).catch(error => {
           console.log('Error login')
           console.log(error)
           window.alert('Please enter correct username and Password')
-          this.$router.push('/login')
+          this.$router.push('/')
         })
       }
- }
-</script>
-
-<style>
-    .padding_login
-    {
-        margin-top: 252px;
     }
+  }
+</script>
+<style scoped>
+  .center{
+    border-radius: 50px;
+  }
 </style>

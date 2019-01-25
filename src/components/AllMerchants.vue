@@ -1,36 +1,24 @@
 <template>
   <v-layout>
-    <v-flex xs12 sm6>
-      <v-card height="200px" width="300px" flat="true">
-        <h2>Product By Other Merchants</h2>
-        <v-divider></v-divider>
-        <v-card flat="true">
-          <br>
-        </v-card>
-        <br>
-          <v-flex
-                  v-bind="{ [`xs${card.flex}`]: true }"
-                    v-for="card in merchants"
-                    :key="card.merchantId"
-                  >
-                   <v-card >
-          <br><h3>Sold By</h3>
-          <br>
-          <v-divider></v-divider>
-         <v-flex  offset-sm1>
-         <div> Name:<span class="blue--text ml-4">{{card.merchant.merchantName}}</span></div>
-          <br>
-        <div>  City:<span class="blue--text ml-4">{{card.merchant.merchantCity}}</span></div>
-           <br>
-           <div > Price:<span class="blue--text ml-4">{{card.price}}</span></div>
-            <br>
-           <div > Rating:<span class="blue--text ml-4">{{card.merchant.merchantRating}}<v-icon>star</v-icon></span></div>
-         </v-flex>   <v-flex offset-sm6> <v-btn>View</v-btn></v-flex> </v-card>
+  
+        <v-flex xs6 sm2 md5 offset-sm1 style="margin-top:50px;" flat>
+            <v-toolbar color="#B3E5FC" dark>
+              <v-toolbar-title>
+                <h5 style="color=#01579B">Other Merchants Selling this Product</h5>
+              </v-toolbar-title>
+            </v-toolbar>
+            <v-data-table :items="merchants" class="elevation-1" >
+              <template slot="items" slot-scope="props">
+                <td>{{ props.item.merchants.merchantName }}</td>
+                <td>{{ props.item.merchants.merchantRating }}</td>
+              </template>
+              <template
+                slot="pageText"
+                slot-scope="props"
+              >Lines {{ props.pageStart }} - {{ props.pageStop }} to {{ props.itemsLength }}</template>
+            </v-data-table>
           </v-flex>
-       
-        <br>
-      </v-card>
-    </v-flex>
+  
   </v-layout>
 </template>
 <script>
@@ -45,25 +33,27 @@ export default {
       qty: 1,
 
       globalPrice: 0,
-      merchants: [ {
-        merchantProductId: '',
-        price: '',
-        salePrice: '',
-        stock: '',
-        productId: '',
-        merchant: {
-         merchantId: "",
-          merchantName: '',
-          merchantCity: '',
-          merchantRating: ''
+      merchants: [
+        {
+          merchantProductId: "",
+          price: "",
+          salePrice: "",
+          stock: "",
+          productId: "",
+          merchant: {
+            merchantId: "",
+            merchantName: "",
+            merchantCity: "",
+            merchantRating: ""
+          }
         }
-      
-      }]
-    }
+      ]
+    };
   },
   created: function() {
     Axios.get(
-      "http://10.177.7.120:8080/getMerchantFromProductId/" + this.$route.params.id,
+      "http://10.177.7.120:8080/getMerchantFromProductId/" +
+        this.$route.params.id,
       {}
     )
       .then(response => {
@@ -74,5 +64,5 @@ export default {
         console.log(error);
       });
   }
-}
+};
 </script>
