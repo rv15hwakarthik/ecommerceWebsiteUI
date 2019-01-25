@@ -57,12 +57,15 @@
           email: this.email
         }).then(response => {
           console.log(response.data)
-
+          Vue.localStorage.set('token', response.data)
+          console.log(response.data)
+          localStorage.getItem('token')
+          this.$router.push('/')
         }).catch(error => {
           console.log('Error login')
           console.log(error)
           window.alert('Please enter correct username and Password')
-          this.$router.push('/')
+          this.$router.push('/login')
         })
       }
     }

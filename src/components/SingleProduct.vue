@@ -39,7 +39,7 @@
               <v-btn
                 round
                 color="#FF8C00"
-               
+                v-bind:to="{name: 'Cart', params: {id: item.productId }}"
                 @click="addtocart"
               >
                 <b>Add To Cart</b>
@@ -203,10 +203,9 @@ export default {
         });
 
       Axios.get(
-        "http://localhost:8080/cart/getcartId/cc898d6f-678d-432a-b128-ad05d9829e69",{
+        "http://localhost:8080/cart/getcartId/"+  Vue.localStorage.get('token'),{
         headers: {
-          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
-          
+          "userId": Vue.localStorage.get('token')
         }}
       )
         .then(response => {
@@ -217,13 +216,8 @@ export default {
           
         });
       Axios.get(
-        "http://10.177.7.131:8003/products/getProduct/" + this.$route.params.id,{
- headers: {
-          "Content-Type": "application/json",
-       
-        }
-        }
-        
+        "http://10.177.7.131:8003/products/getProduct/" + this.$route.params.id,
+        {}
       )
         .then(response => {
           this.item = response.data;
@@ -244,16 +238,13 @@ export default {
       Axios.post("http://localhost:8080/cartproduct/add", payload, {
         headers: {
           "Content-Type": "application/json",
-          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+          "userId": Vue.localStorage.get('token')
         }
       })
-        .then(
-              this.$router.push('/cart/'+this.item.productId)
-
-        )
+        .then()
         .catch(error => {
           console.log(error.response);
-           this.$router.push('/login')
+            this.$router.push('/login')
         });
     }
   },

@@ -42,7 +42,7 @@
 
         </v-navigation-drawer>
 
-        <v-toolbar color="deep-orange lighten-3" fixed>
+        <v-toolbar color fixed>
           <v-toolbar-side-icon @click.stop="sideNav=!sideNav" />
           <v-toolbar-title class="white--text">
       <v-btn router to="/"  active-class flat>
@@ -74,6 +74,9 @@
             </v-btn>
             <v-btn flat router to="/">
               <v-icon left>supervisor_account</v-icon>Login
+            </v-btn>
+            <v-btn flat router to="/" @click="logout">
+              <v-icon left>supervisor_account</v-icon>Logut
             </v-btn>
         </v-toolbar>
 
@@ -137,12 +140,20 @@
          console.log(error)
        })
            },
-    //   logout: function () {
-    //     localStorage.removeItem('token')
-    //     console.log('token deleted')
-    //     this.$router.push('/admin/')
+      logout: function () {
+        Axios.delete(
+        "http://localhost:8000/user/logout/web/"+ Vue.localStorage.get('token'),{
+           }
+      )
+        .then(res => {
+  localStorage.removeItem('token')
+        })
+        .catch(function(error) {
+         
+        });
+           window.location.reload();
       
-    // },
+    },
     functionSearch: function() {
       console.log(model)
       this.$router.push("/products/"+ model)

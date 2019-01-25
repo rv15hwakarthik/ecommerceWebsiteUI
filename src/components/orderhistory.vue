@@ -78,6 +78,8 @@
 </template>
 <script>
  import Axios from 'axios'
+ import Vue from "vue";
+import VueLocalStorage from "vue-localstorage";
 export default {
   name: "Products",
   data() {
@@ -102,15 +104,19 @@ export default {
   created: function() {
     console.log("id is called");
 
-    console.log(this.$route.params.id);
+    Axios.get("http://localhost:8080/getAllorder/"+ Vue.localStorage.get('token'),{
 
-    Axios.get("http://localhost:8080/getAllorder/4b726cbf-a5a1-4118-9d71-a239508b5172")
+      headers: {
+          "userId": Vue.localStorage.get('token')
+        }  
+    })
       .then(response => {
         this.products = response.data;
         console.log(response.data);
       })
       .catch(error => {
-        console.log(error);
+    
+           this.$router.push('/login')
       });
   }
  

@@ -83,9 +83,9 @@ export default {
     async getDetail() {
         
       Axios.get(
-        "http://localhost:8080/cart/getAllproductincart/cc898d6f-678d-432a-b128-ad05d9829e69",{
+        "http://localhost:8080/cart/getAllproductincart/"+ Vue.localStorage.get('token'),{
         headers: {
-              "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+              "userId": Vue.localStorage.get('token')
             }}
       )
         .then(response => {
@@ -97,10 +97,10 @@ export default {
           // this.$router.push('/login')
         });
       Axios.get(
-        "http://localhost:8080/cart/getcartId/cc898d6f-678d-432a-b128-ad05d9829e69",{
+        "http://localhost:8080/cart/getcartId/"+ Vue.localStorage.get('token'),{
         headers: {
 
-              "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+              "userId": Vue.localStorage.get('token')
             }}
       )
         .then(response => {
@@ -108,7 +108,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
-       //    this.$router.push('/login')
+          this.$router.push('/login')
         });
 
   
@@ -133,12 +133,12 @@ export default {
       if (confirm("Are you sure to remove this item?")) {
        
         Axios.delete(
-          "http://localhost:8080/cartproduct/delete/cc898d6f-678d-432a-b128-ad05d9829e69/" +
+          "http://localhost:8080/cartproduct/delete/" + Vue.localStorage.get('token')+"/"+
             _id,
           {
             headers: {
 
-              "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+              "userId": Vue.localStorage.get('token')
             }
           }
         )
@@ -165,7 +165,7 @@ export default {
       Axios.put(" http://localhost:8080/cartproduct/update", payload, {
         headers: {
           "Content-Type": "application/json",
-          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+          "userId": Vue.localStorage.get('token')
         }
       })
         .then(console.log(fd))
@@ -176,9 +176,9 @@ export default {
     },
  deleteAll(){
        Axios.delete(
-        "http://localhost:8080/cart/deleteproduct/cc898d6f-678d-432a-b128-ad05d9829e69",{
+        "http://localhost:8080/cart/deleteproduct/"+ Vue.localStorage.get('token'),{
          headers: {
-          "userId":"cc898d6f-678d-432a-b128-ad05d9829e69"
+          "userId": Vue.localStorage.get('token')
         }  
         }
       )
@@ -186,7 +186,7 @@ export default {
   
         })
         .catch(function(error) {
-         //   this.$router.push('/login')
+           this.$router.push('/login')
         });
            window.location.reload();
  },
@@ -197,21 +197,22 @@ export default {
   
   }     //  console.log( orderProducts.productId[i])};
       var ordert = {
-        userId: "4b726cbf-a5a1-4118-9d71-a239508b5172",
+        userId:  Vue.localStorage.get('token'),
         orderPlacedDate:new Date().toISOString().substr(0, 19),
        orderProducts:this.orderProducts
       };
 
       Axios.post("http://localhost:8080/order/add", ordert, {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+         "userId":  Vue.localStorage.get('token')
         }
       })
         .then(response => { 
         })
         .catch(error => {
           console.log(error.response);
-        //    this.$router.push('/login')
+           this.$router.push('/login')
         });
          Axios.get("http://localhost:8080/send" 
        )

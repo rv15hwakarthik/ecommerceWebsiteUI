@@ -95,7 +95,11 @@ export default {
 
   created: function() {
     Axios.get(
-      "http://localhost:8080/getAllorderProducts/" + this.$route.params.id
+      "http://localhost:8080/getAllorderProducts/" + this.$route.params.id,{
+        headers: {
+          "userId": Vue.localStorage.get('token')
+        }  
+      }
     )
       .then(response => {
         this.orderProducts = response.data;
@@ -114,7 +118,7 @@ export default {
   },
   methods: {
     getStuff(i, id) {
-      Axios.get("http://17552ce1.ngrok.io/products/getProduct/" + id)
+      Axios.get("http://10.177.7.131:8003/products/getProduct/" + id)
         .then(response1 => {
           Vue.set(this.items,i,response1.data)})
         .catch(error => {
@@ -128,7 +132,7 @@ export default {
        console.log(rev);
        console.log(this.items[index].productId);
       Axios.put(
-        "http://17552ce1.ngrok.io/products/updateProduct/" +
+        "http://10.177.7.131:8003/products/updateProduct/" +
           this.items[index].productId +
           "?comment=" +
           rev +
