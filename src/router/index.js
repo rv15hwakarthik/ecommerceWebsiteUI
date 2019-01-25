@@ -13,6 +13,10 @@ import Rating from '@/components/Rating'
 import ThankYou from '@/components/ThankYou'
 import NavBarLogIn from '@/components/NavBarLogIn'
 import NavBarLogOut from '@/components/NavBarLogOut'
+import SingleComponent from '@/components/SingleComponent'
+import AllMerchants from '@/components/AllMerchants'
+import Productorder from '@/components/Productorder'
+import OrderNew from '@/components/OrderNew'
 
 Vue.use(Router)
 
@@ -83,6 +87,26 @@ export default new Router({
       path: '/navbartwo',
       name: 'NavBarLogOut',
       component: NavBarLogOut
+    },
+    {
+      path: '/singleproduct',
+      name: 'SingleComponent',
+      component: SingleComponent
+    },
+    {
+      path: '/allmerchants',
+      name: 'AllMerchants',
+      component: AllMerchants
+    },
+    {
+      path: '/productorder',
+      name: 'Productorder',
+      component: Productorder
+    },
+    {
+      path: '/ordernew',
+      name: 'OrderNew',
+      component: OrderNew
     }
   ],
 

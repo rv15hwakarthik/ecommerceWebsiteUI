@@ -1,28 +1,47 @@
 <template>
   <div class="container">
-    <h1 align="center" style="font-family:sans-serif; margin-top:145px">Order History</h1>
+    <h1 align="center" style="font-family:sans-serif; margin-top:90px">Order History</h1>
     <div v-for="item in products" :key="item.name">
       <v-container>
         <v-layout>
           <v-flex md7 offset-md2>
-            <v-card>
+            <v-card flat>
               <v-layout>
-                <v-flex>
+                <v-flex md4>
                   <v-img :src="item.photo"></v-img>
                 </v-flex>
                 <v-flex>
                   <div style="font-family : sans-serif">
-                    <div style="margin-left:50px; margin-top:10px;">
-                      <p>PRODUCT NAME : {{item.name}}</p>
+                    <div style="margin-left:30px; margin-top:10px;">
+                      <p>
+                        <strong>Product Name :</strong>
+                        {{item.name}}&nbsp;
+                      </p>
                     </div>
-                    <div style="margin-left:50px">
-                      <p>Order Date : {{item.OrderDate}}</p>
+                    <div style="margin-left:30px; margin-top:10px;">
+                      <p>
+                        <b>Price :</b>
+                        {{item.price}}&nbsp;
+                      </p>
                     </div>
-                    <div style="margin-left:50px">
-                      <p>PRICE : {{item.price}}</p>
+                    <div style="margin-left:30px; margin-top:10px;">
+                      <p>
+                        <b>Quantity:</b>
+                        {{item.quantity}}
+                      </p>
                     </div>
-                    <div style="margin-left:50px">
-                      <p>QUANTITY : {{item.quantity}}</p>
+                    <div>
+                      <v-text-field style="margin-left:60px;" label="Reviews" single-line outline></v-text-field>
+                    </div>
+                    <div class="text-sm-center">
+                      <v-rating
+                        v-model="rating"
+                        color="yellow darken-3"
+                        background-color="grey darken-1"
+                        empty-icon="$vuetify.icons.ratingFull"
+                        half-increments
+                        hover
+                      ></v-rating>
                     </div>
                   </div>
                 </v-flex>
@@ -36,10 +55,8 @@
 </template>
 <script>
 // import Axios from 'axios'
-
 export default {
   name: "Products",
-
   data() {
     return {
       products: [
@@ -83,3 +100,5 @@ export default {
   }
 };
 </script>
+
+

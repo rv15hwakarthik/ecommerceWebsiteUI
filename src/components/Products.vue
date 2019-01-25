@@ -11,11 +11,15 @@
                   <div
                     style="font-family:sans-serif; margin-left:10px; font-size:170%; margin-top:10px"
                   >{{ card.title }}</div>
-                  <div style="font-family:sans-serif; margin-left:10px; font-size:200%; margin-top:10px">
-                  <span style="font-size:70%"><s> {{ card.mrp }} Rs </s></span>
-                  <span >
-                    <b> {{ card.price }} Rs </b>
-                  </span>
+                  <div
+                    style="font-family:sans-serif; margin-left:10px; font-size:200%; margin-top:10px"
+                  >
+                    <span style="font-size:70%">
+                      <s>{{ card.mrp }} Rs</s>
+                    </span>
+                    <span>
+                      <b>{{ card.price }} Rs</b>
+                    </span>
                   </div>
                   <div style="margin-top:10px">
                     <span

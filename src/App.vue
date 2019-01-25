@@ -2,9 +2,9 @@
   <div id="app" style="background-image: url('');">
     <v-toolbar fixed extended extension-height="40px" color>
       <v-container class="font">
-        <v-layout>  
+        <v-layout>
           <v-toolbar-title>
-            <v-btn router to="/"  active-class flat>
+            <v-btn router to="/" active-class flat>
               <div style="color:black">
                 <img :src="require('./assets/logo.png')" height="50" width="250">
               </div>
@@ -22,21 +22,23 @@
             solo hide-details single-line full-width
             style="border-radius:20%">
                 </v-text-field>-->
-                  <v-autocomplete
-                    v-model="model"
-                    :items="items"
-                    :loading="isLoading"
-                    :search-input.sync="search"
-                    color="white"
-                    hide-no-data
-                    hide-selected
-                    item-text="Description"
-                    item-value="API"
-                    placeholder="Start typing to Search"
-                    return-Object
-                  ></v-autocomplete>
-       
-                <v-btn flat @click="functionSearch"><v-icon>search</v-icon></v-btn>
+                <v-autocomplete
+                  v-model="model"
+                  :items="items"
+                  :loading="isLoading"
+                  :search-input.sync="search"
+                  color="white"
+                  hide-no-data
+                  hide-selected
+                  item-text="Description"
+                  item-value="API"
+                  placeholder="Start typing to Search"
+                  return-Object
+                ></v-autocomplete>
+
+                <v-btn flat @click="functionSearch">
+                  <v-icon>search</v-icon>
+                </v-btn>
               </v-toolbar-items>
             </v-flex>
           </v-layout>
@@ -61,10 +63,23 @@
           <img src="@/assets/coviam4.png" style="width=100px; height:50px;">
           <span style="margin-left:220px"/>
           <img src="@/assets/free.png" style="width=auto; height:50px;">
-        </div> -->
+        </div>-->
       </v-container>
     </v-toolbar>
     <router-view/>
+    <br>
+    <br>
+    <v-footer light fixed height="auto">
+      <div style="margin-left:60px">
+        <img src="@/assets/cod.png" style="width=100px; height:50px;">
+        <span style="margin-left:200px"/>
+        <img src="@/assets/made.png" style="width=100px; height:50px;">
+        <span style="margin-left:250px"/>
+        <img src="@/assets/coviam4.png" style="width=100px; height:50px;">
+        <span style="margin-left:340px"/>
+        <img src="@/assets/free.png" style="width=auto; height:50px;">
+      </div>
+    </v-footer>
   </div>
 </template>
 <script>
@@ -74,18 +89,20 @@ export default {
     descriptionLimit: 60,
     entries: [],
     isLoading: false,
-    model: null,
+    model: "",
     search: null
   }),
-  functionSearch: function() {
-      console.log(model)
-      this.$router.push("/products/"+ model)
-    },
+  methods: {
+    functionSearch: function() {
+      console.log(model+"Hello");
+      this.$router.push("/products/"+model);
+    }
+  },
   computed: {
     fields() {
       if (!this.model) return [];
 
-      console.log("hi")
+      console.log("hi");
       return Object.keys(this.model).map(key => {
         return {
           key,
@@ -118,7 +135,6 @@ export default {
         .then(res => {
           const entries = res;
           this.entries = entries;
-          
         })
         .catch(err => {
           console.log(err);
